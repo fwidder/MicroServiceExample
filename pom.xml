@@ -19,6 +19,9 @@
         <module>servicediscovery</module>
         <module>model</module>
         <module>messageservice</module>
+        <module>dashboardservice</module>
+        <module>gatewayservice</module>
+        <module>bootadmin</module>
     </modules>
 
 </project>

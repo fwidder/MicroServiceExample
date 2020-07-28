@@ -2,8 +2,11 @@
 
 ## Ports
 
-| Service          | Port |
-|------------------|------|
-| Configserver     | 8081 |
-| ServiceDiscovery | 8082 |
-| MessageService   | 8083 |
+| Service             | Port |
+|---------------------|------|
+| Gateway Service     | 8080 |
+| Config Server       | 8081 |
+| Service Discovery   | 8082 |
+| Message Service     | 8083 |
+| DashBoard Service   | 8084 |
+| Spring Boot Admin   | 8085 |
