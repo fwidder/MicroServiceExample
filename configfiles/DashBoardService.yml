@@ -1,0 +1,20 @@
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8082/eureka
+management:
+    endpoint:
+      health:
+        show-details: always
+      shutdown:
+        enabled: true
+    security:
+        enabled: false
+    web:
+      exposure:
+        include: '*'
+security:
+    basic:
+        enable: false
+server:
+    port: 8084

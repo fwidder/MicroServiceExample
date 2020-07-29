@@ -388,3 +388,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,java,java-web,code-java,eclipse,intellij+all,windows,git,node,vue,vuejs,visualstudiocode
+.vscode/settings.json
