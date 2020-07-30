@@ -4,4 +4,10 @@ spring:
     cloud:
         config:
             fail-fast: true
-            uri: http://localhost:8081
+            uri: http://configserver:8081
+            retry:
+              max-attempts: 60
+zuul:
+    routes:
+        dashboardUI:
+            serviceId: DashBoardService

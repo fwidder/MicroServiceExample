@@ -1,0 +1,99 @@
+version: '2.2'
+networks:
+    microserviceexample-network:
+        driver: bridge
+services:
+    configserver:
+        container_name: configserver
+        build:
+            context: ./configserver/
+            dockerfile: Dockerfile
+        image: configserver:latest
+        expose:
+            - 8081
+        ports:
+            - 8081:8081
+        networks:
+            - microserviceexample-network
+        volumes:
+            - ./configserver/configfiles:/var/configfiles
+    servicediscovery:
+        container_name: servicediscovery
+        build:
+            context: ./servicediscovery/
+            dockerfile: Dockerfile
+        depends_on:
+            - configserver
+        image: servicediscovery:latest
+        expose:
+            - 8082
+        ports:
+            - 8082:8082
+        networks:
+            - microserviceexample-network
+    bootadmin:
+        container_name: bootadmin
+        build:
+            context: ./bootadmin/
+            dockerfile: Dockerfile
+        depends_on:
+            - configserver
+            - servicediscovery
+        image: bootadmin:latest
+        expose:
+            - 8085
+        ports:
+            - 8085:8085
+        networks:
+            - microserviceexample-network
+    messageservice:
+        container_name: messageservice
+        build:
+            context: ./messageservice/
+            dockerfile: Dockerfile
+        depends_on:
+            - configserver
+            - servicediscovery
+            - bootadmin
+        image: messageservice:latest
+        expose:
+            - 8083
+        ports:
+            - 8083:8083
+        networks:
+            - microserviceexample-network
+    dashboardservice:
+        container_name: dashboardservice
+        build:
+            context: ./dashboardservice/
+            dockerfile: Dockerfile
+        depends_on:
+            - configserver
+            - servicediscovery
+            - bootadmin
+            - messageservice
+        image: dashboardservice:latest
+        expose:
+            - 8084
+        ports:
+            - 8084:8084
+        networks:
+            - microserviceexample-network
+    gatewayservice:
+        container_name: gatewayservice
+        build:
+            context: ./gatewayservice/
+            dockerfile: Dockerfile
+        depends_on:
+            - configserver
+            - servicediscovery
+            - bootadmin
+            - messageservice
+            - dashboardservice
+        image: gatewayservice:latest
+        expose:
+            - 8080
+        ports:
+            - 8080:8080
+        networks:
+            - microserviceexample-network

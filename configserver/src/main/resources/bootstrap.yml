@@ -5,6 +5,6 @@ spring:
         config:
             server:
                 native:
-                    searchLocations: ${user.home}/Developer/Privat/MicroServiceExample/configfiles
+                    searchLocations: /var/configfiles
     profiles:
         active: native

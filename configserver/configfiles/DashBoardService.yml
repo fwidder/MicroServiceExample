@@ -1,12 +1,22 @@
 eureka:
     client:
         serviceUrl:
-            defaultZone: http://localhost:8082/eureka
+            defaultZone: http://servicediscovery:8082/eureka
 management:
     endpoint:
       health:
         show-details: always
       shutdown:
+        enabled: true
+      auditevents:
+        enabled: true
+      beans:
+        enabled: true
+      env:
+        enabled: true
+      httptrace:
+        enabled: true
+      mappings:
         enabled: true
     security:
         enabled: false
@@ -17,4 +27,4 @@ security:
     basic:
         enable: false
 server:
-    port: 8083
+    port: 8084

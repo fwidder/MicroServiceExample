@@ -4,7 +4,7 @@ eureka:
         registerWithEureka: true
         registryFetchIntervalSeconds: 5
         serviceUrl:
-            defaultZone: http://localhost:8082/eureka
+            defaultZone: http://servicediscovery:8082/eureka
     instance:
         hostname: localhost
 management:
@@ -12,6 +12,16 @@ management:
     health:
       show-details: always
     shutdown:
+      enabled: true
+    auditevents:
+      enabled: true
+    beans:
+      enabled: true
+    env:
+      enabled: true
+    httptrace:
+      enabled: true
+    mappings:
       enabled: true
     web:
       exposure:
